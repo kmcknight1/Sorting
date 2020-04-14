@@ -1,6 +1,14 @@
 
+'''
+Place first element on "sorted side", scan through the remainder of the 
+array for the smallest value (if any values are smaller than the first element).
+Swap elements, move on to the next and repeat.
+'''
+
+
 def selection_sort(arr):
     # loop through n-1 elements
+    # n-1 because after the sort, the one remaining will be the largest
     for i in range(0, len(arr) - 1):
         cur_index = i
         smallest_index = cur_index

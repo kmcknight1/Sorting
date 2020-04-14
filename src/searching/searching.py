@@ -1,9 +1,17 @@
+my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+
 # STRETCH: implement Linear Search
 def linear_search(arr, target):
 
-  # TO-DO: add missing code
+    for i in arr:
+        if i == target:
+            return True
 
-    return -1   # not found
+    return False
+
+
+linear_search(my_list, 8)
 
 
 # STRETCH: write an iterative implementation of Binary Search
@@ -12,12 +20,23 @@ def binary_search(arr, target):
     if len(arr) == 0:
         return -1  # array empty
 
-    low = 0
-    high = len(arr)-1
+    lo = 0
+    hi = len(arr)-1
 
-    # TO-DO: add missing code
+    while lo < hi:
+        mid = (lo + hi)//2
 
-    return -1  # not found
+        if target == arr[mid]:
+            return True
+        elif target > arr[mid]:
+            lo = arr[mid]
+        else:
+            hi = arr[mid]
+
+    return False  # not found
+
+
+binary_search(my_list, 8)
 
 
 # STRETCH: write a recursive implementation of Binary Search
@@ -26,8 +45,7 @@ def binary_search_recursive(arr, target, low, high):
     middle = (low+high)//2
 
     if len(arr) == 0:
-        return -1  # array empty
-    # TO-DO: add missing if/else statements, recursive calls
+        return False  # array empty
 
 
 '''
@@ -60,8 +78,29 @@ def class_binary_search(arr, target):
     return False
 
 
-my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
 print(class_binary_search(my_list, 30))
 print(class_binary_search(my_list, 10))
 print(class_binary_search(my_list, 8))
+
+
+'''
+Challenge from Training Kit:
+Write a recursive search function that receives as input an array of 
+integers and a target integer value. This function should return True 
+if the target element exists in the array, and False otherwise.
+'''
+
+
+def recursive_search(arr, target):
+    i = len(arr) - 1
+
+    if i < 0:
+        return False
+    elif arr[i] == target:
+        return True
+    else:
+        arr.pop()
+        recursive_search(arr, target)
+
+
+recursive_search([1, 2, 3, 4, 5, 6, 7, 8, 9], 6)

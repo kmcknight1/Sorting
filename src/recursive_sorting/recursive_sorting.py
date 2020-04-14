@@ -1,3 +1,8 @@
+import random
+import time
+import sys
+
+
 def merge(l, r):
     nl = len(l)
     nr = len(r)
@@ -16,11 +21,11 @@ def merge(l, r):
         elif j == nr:
             merged_arr[i+j] = l[i]
             i += 1
-        # if left side[i] is larger than right side[j], add to list and increment i
+        # if left side[i] is smaller than right side[j], add to list and increment i
         elif l[i] <= r[j]:
             merged_arr[i+j] = l[i]
             i += 1
-        # if right side[j] is larger than left side[i], add to list and increment j
+        # if right side[j] is smaller than left side[i], add to list and increment j
         else:
             merged_arr[i+j] = r[j]
             j += 1
@@ -41,7 +46,22 @@ def merge_sort(arr):
     return merge(merge_sort(l), merge_sort(r))
 
 
+while True:
+    n = input("\n\033[91mRandom list length: \033[00m")
+    n = int(n)
+    random_list = random.sample(range(n), n)
+    b = time.time()
+    merge_sort(random_list)
+    e = time.time()
+
+    print(f'\033[96mRuntime:\033[00m {e - b} seconds')
+
+
 # STRETCH: implement an in-place merge sort algorithm
+# IN-PLACE means more memory efficient, not creating a new array in memory
+# make use of swaps for this
+
+
 def merge_in_place(arr, start, mid, end):
     # TO-DO
 
